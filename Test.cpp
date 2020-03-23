@@ -128,16 +128,16 @@ TEST_CASE("Test replacement of i and y") {
 
 TEST_CASE("Test exception thrown") {
     string text = "We are the champions my friends";
-    CHECK_THROWS_WITH(find(text,""),"Invalid input text or word");
-    CHECK_THROWS_WITH(find(text, "Test") ,"Word does not exist in the text");
-    CHECK_THROWS_WITH(find(text, "Test2"), "Word does not exist in the text");
-    CHECK_THROWS_WITH_AS(find(text, "Test3"), "Word does not exist in the text", std::invalid_argument); 
-    CHECK_THROWS_WITH(find(text,"90"),"Word does not exist in the text");
-    CHECK_THROWS_WITH(find(text,","),"Word does not exist in the text");
-    CHECK_THROWS_WITH(find(text,"."),"Word does not exist in the text");
-    CHECK_THROWS_WITH(find(text,"-"),"Word does not exist in the text");
-    CHECK_THROWS_WITH(find(text,"Weeeeee"),"Word does not exist in the text");
-    CHECK_THROWS_WITH(find(text,"friend"),"Word does not exist in the text");
-    CHECK_THROWS_WITH(find(text,"champ"),"Word does not exist in the text");
-    CHECK_THROWS_WITH(find("","are"),"Invalid input text or word");
+    CHECK_THROWS_AS(find(text,""),std::exception);
+    CHECK_THROWS_AS(find(text, "Test") ,std::exception);
+    CHECK_THROWS_AS(find(text, "Test2"), std::exception);
+    CHECK_THROWS_AS(find(text, "Test3"),std::exception); 
+    CHECK_THROWS_AS(find(text,"90"),std::exception);
+    CHECK_THROWS_AS(find(text,","),std::exception);
+    CHECK_THROWS_AS(find(text,"."),std::exception);
+    CHECK_THROWS_AS(find(text,"-"),std::exception);
+    CHECK_THROWS_AS(find(text,"Weeeeee"),std::exception);
+    CHECK_THROWS_AS(find(text,"friend"),std::exception);
+    CHECK_THROWS_AS(find(text,"champ"),std::exception);
+    CHECK_THROWS_AS(find("","are"),std::exception);
 }
